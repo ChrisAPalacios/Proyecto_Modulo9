@@ -1,0 +1,48 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="es" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="~{plantillas/head :: head}"></head>-->
+<!--<body>-->
+<!--<header th:replace="~{plantillas/header_cliente :: header}"></header>-->
+
+<!--<main class="container mt-4">-->
+<!--  <h2 class="text-center text-primary">Mis Boletos</h2>-->
+
+<!--  <div class="table-responsive mt-4">-->
+<!--    <table class="table table-bordered table-hover text-center">-->
+<!--      <thead class="table-info">-->
+<!--      <tr>-->
+<!--        <th>ID Boleto</th>-->
+<!--        <th>Evento</th>-->
+<!--        <th>Fecha</th>-->
+<!--        <th>Asiento</th>-->
+<!--        <th>Zona</th>-->
+<!--        <th>Precio</th>-->
+<!--        <th>Estado</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr th:each="boleto : ${boletos}">-->
+<!--        <td th:text="${boleto.idBoleto}"></td>-->
+<!--        <td th:text="${boleto.evento.nombreEvento}"></td>-->
+<!--        <td th:text="${#dates.format(boleto.evento.fecha, 'dd/MM/yyyy')}"></td>-->
+<!--        <td th:text="${boleto.asiento.numeroAsiento}"></td>-->
+<!--        <td th:text="${boleto.asiento.zona.nombreZona}"></td>-->
+<!--        <td>$<span th:text="${boleto.asiento.zona.precio}"></span></td>-->
+<!--        <td th:text="${boleto.estado}"></td>-->
+<!--      </tr>-->
+<!--      <tr th:if="${#lists.isEmpty(boletos)}">-->
+<!--        <td colspan="7">No has comprado boletos aún.</td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+
+<!--  <div class="text-end">-->
+<!--    <a th:href="@{/cliente/inicio}" class="btn btn-secondary">Volver al Inicio</a>-->
+<!--  </div>-->
+<!--</main>-->
+
+<!--<footer th:replace="~{plantillas/footer :: footer}"></footer>-->
+<!--<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>-->
+<!--</body>-->
+<!--</html>-->

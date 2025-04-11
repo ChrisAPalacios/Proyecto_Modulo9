@@ -1,0 +1,48 @@
+<!-- paginas/admin/eventos_admin.html -->
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{plantillas/head :: head}"></head>
+<body>
+
+<header th:replace="~{plantillas/header_admin :: header}"></header>
+
+<main class="container mt-5">
+    <h2 class="text-center text-primary">Gestión de Eventos</h2>
+    <div class="text-end mb-3">
+        <a th:href="@{/admin/eventos/nuevo}" class="btn btn-success">Nuevo Evento</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark text-center">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Duración</th>
+                <th>Tipo</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="evento : ${eventos}">
+                <td th:text="${evento.idEvento}">1</td>
+                <td th:text="${evento.nombreEvento}">Nombre</td>
+                <td th:text="${evento.fecha}">2025-06-01</td>
+                <td th:text="${evento.duracion}">120</td>
+                <td th:text="${evento.tipoEvento.tipo}">Tipo</td>
+                <td class="text-center">
+                    <a th:href="@{/admin/eventos/editar/{id}(id=${evento.idEvento})}" class="btn btn-sm btn-warning">Editar</a>
+                    <a th:href="@{/admin/eventos/eliminar/{id}(id=${evento.idEvento})}" class="btn btn-sm btn-danger"
+                       onclick="return confirm('¿Estás seguro de eliminar este evento?')">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer th:replace="~{plantillas/footer :: footer}"></footer>
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

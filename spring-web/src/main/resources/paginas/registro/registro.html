@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{plantillas/head :: head}"></head>
+<body>
+
+<header th:replace="~{plantillas/header :: header}"></header>
+
+<main th:replace="~{plantillas/layout :: contenido(~{::registroContenido})}">
+  <div th:fragment="registroContenido">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <h2 class="text-center text-primary">Registro</h2>
+            <form th:action="@{/registro}" method="post" th:object="${usuario}">
+              <div class="mb-3">
+                <label class="form-label">Nombre:</label>
+                <input type="text" class="form-control" placeholder="Tu nombre" th:field="*{nombre}">
+                <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Apellido Paterno:</label>
+                <input type="text" class="form-control" placeholder="Tu apellido paterno" th:field="*{apellidoPaterno}">
+                <div class="text-danger" th:if="${#fields.hasErrors('apellidoPaterno')}" th:errors="*{apellidoPaterno}"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Apellido Materno:</label>
+                <input type="text" class="form-control" placeholder="Tu apellido materno" th:field="*{apellidoMaterno}">
+                <div class="text-danger" th:if="${#fields.hasErrors('apellidoMaterno')}" th:errors="*{apellidoMaterno}"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Correo Electrónico:</label>
+                <input type="email" class="form-control" placeholder="ejemplo@unam.mx" th:field="*{correo}">
+                <div class="text-danger" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Teléfono:</label>
+                <input type="text" class="form-control" placeholder="Tu número de teléfono" th:field="*{telefono}">
+                <div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Contraseña:</label>
+                <input type="password" class="form-control" placeholder="Contraseña" th:field="*{password}">
+                <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+              </div>
+
+              <!-- Mensaje de error general -->
+              <div th:if="${error}" class="alert alert-danger text-center">
+                <p th:text="${error}"></p>
+              </div>
+
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+              </div>
+            </form>
+
+            <p class="text-center mt-3">
+              ¿Ya tienes una cuenta? <a th:href="@{/login}">Inicia sesión aquí</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer th:replace="~{plantillas/footer :: footer}"></footer>
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{plantillas/head :: head}"></head>
+<body>
+
+<header th:replace="~{plantillas/header_admin :: header}"></header>
+
+<main class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header text-white bg-primary text-center">
+      <h4>Detalles del Usuario</h4>
+    </div>
+    <div class="card-body">
+      <p><strong>ID:</strong> <span th:text="${usuario.idUsuario}">1</span></p>
+      <p><strong>Nombre:</strong>
+        <span th:text="${usuario.nombre + ' ' + usuario.apellidoPaterno + ' ' + usuario.apellidoMaterno}">Nombre completo</span>
+      </p>
+      <p><strong>Correo:</strong> <span th:text="${usuario.correo}">correo@unam.mx</span></p>
+      <p><strong>Teléfono:</strong> <span th:text="${usuario.telefono}">5551234567</span></p>
+      <p><strong>Tipo de Usuario:</strong> <span th:text="${usuario.tipoUsuario}">CLIENTE</span></p>
+    </div>
+    <div class="card-footer text-center">
+      <a th:href="@{/admin/usuarios}" class="btn btn-secondary">Volver</a>
+    </div>
+  </div>
+</main>
+
+<footer th:replace="~{plantillas/footer :: footer}"></footer>
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

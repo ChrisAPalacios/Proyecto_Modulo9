@@ -1,0 +1,19 @@
+<!-- src/main/resources/paginas/inicio.html -->
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{plantillas/head :: head}"></head>
+<body>
+<header th:replace="~{plantillas/header :: header}"></header>
+
+<main class="container mt-4">
+  <h2>Bienvenido a Eventia</h2>
+  <div th:if="${mensajeLogout}" class="alert alert-success text-center mt-3">
+    <p th:text="${mensajeLogout}"></p>
+  </div>
+
+</main>
+
+<footer th:replace="~{plantillas/footer :: footer}"></footer>
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

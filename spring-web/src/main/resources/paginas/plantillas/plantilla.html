@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/iconos/bootstrap-icons.css}">
+    <link rel="stylesheet" th:href="@{/tema/miestilo.css}">
+    <title th:text="${titulo}">Eventia</title>
+</head>
+<body>
+
+<!-- Encabezado -->
+<header class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">Eventia</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/eventos}">Eventos</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/categorias}">Categorías</a></li>
+
+                <!-- Si no hay usuario en sesión -->
+                <li class="nav-item" th:if="${session.usuario == null}">
+                    <a class="nav-link" th:href="@{/login}">Iniciar Sesión</a>
+                </li>
+
+                <!-- Si hay usuario en sesión, mostrar "Mi Cuenta" -->
+                <li class="nav-item dropdown" th:if="${session.usuario != null}">
+                    <a class="nav-link dropdown-toggle" href="#" id="cuentaDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Mi Cuenta
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="cuentaDropdown">
+                        <li><a class="dropdown-item" th:href="@{/perfil}">Perfil</a></li>
+                        <li><a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<!-- Contenido Principal -->
+<main>
+    <div class="container" th:fragment="content">
+        <h1 class="text-center">Bienvenido a Eventia</h1>
+    </div>
+</main>
+
+<!-- Pie de página -->
+<footer th:fragment="footer">
+    <div class="container text-center">
+        <p>&copy; 2025 Eventia. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS al final para asegurar su carga en todas las páginas -->
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

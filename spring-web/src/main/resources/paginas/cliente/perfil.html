@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantillas/plantilla :: head"></head>
+<body>
+
+<!-- Encabezado -->
+<header class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">Eventia</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/eventos}">Eventos</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/categorias}">Categorías</a></li>
+
+                <!-- Si no hay usuario en sesión -->
+                <li class="nav-item" th:if="${session.usuario == null}">
+                    <a class="nav-link" th:href="@{/login}">Iniciar Sesión</a>
+                </li>
+
+                <!-- Si hay usuario en sesión, mostrar "Mi Cuenta" -->
+                <li class="nav-item dropdown" th:if="${session.usuario != null}">
+                    <a class="nav-link dropdown-toggle" href="#" id="cuentaDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Mi Cuenta
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="cuentaDropdown">
+                        <li><a class="dropdown-item" th:href="@{/perfil}">Perfil</a></li>
+                        <li><a class="dropdown-item" th:href="@{/logout}">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <h1>Perfil de Usuario</h1>
+
+    <p><strong>Nombre:</strong> <span th:text="${usuario.nombre}"></span></p>
+    <p><strong>Correo:</strong> <span th:text="${usuario.correo}"></span></p>
+    <p><strong>Teléfono:</strong> <span th:text="${usuario.telefono}"></span></p>
+
+    <h2>Métodos de Pago</h2>
+    <a th:href="@{/metodos_pago}" class="btn btn-primary">Gestionar métodos de pago</a>
+
+    <h2>Boletos Adquiridos</h2>
+    <a th:href="@{/boletos}" class="btn btn-primary">Ver mis boletos</a>
+
+    <h2>Cesta</h2>
+    <a th:href="@{/cesta}" class="btn btn-primary">Ver mi cesta</a>
+
+    <br><br>
+    <a th:href="@{/logout}" class="btn btn-danger">Cerrar Sesión</a>
+</main>
+
+<footer th:replace="plantillas/plantilla :: footer"></footer>
+
+</body>
+</html>

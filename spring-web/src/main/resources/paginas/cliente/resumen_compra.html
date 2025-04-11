@@ -1,0 +1,54 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="es" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="~{plantillas/head :: head}"></head>-->
+<!--<body>-->
+<!--<header th:replace="~{plantillas/header_cliente :: header}"></header>-->
+
+<!--<main class="container mt-4">-->
+<!--  <h2 class="text-center text-success">Resumen de tu Compra</h2>-->
+
+<!--  <div class="card mt-4">-->
+<!--    <div class="card-body">-->
+<!--      <h5 class="card-title">Detalles de la Compra</h5>-->
+<!--      <p><strong>Número de Compra:</strong> <span th:text="${compra.idCompra}"></span></p>-->
+<!--      <p><strong>Fecha:</strong> <span th:text="${#temporals.format(compra.fecha, 'dd/MM/yyyy HH:mm')}"></span></p>-->
+<!--      <p><strong>Monto Total:</strong> $<span th:text="${compra.montoTotal}"></span></p>-->
+<!--      <p><strong>Cliente:</strong>-->
+<!--        <span th:text="${compra.usuario.pila + ' ' + compra.usuario.apPaterno}"></span>-->
+<!--      </p>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="mt-4">-->
+<!--    <h5>Boletos Adquiridos</h5>-->
+<!--    <table class="table table-bordered table-hover text-center">-->
+<!--      <thead class="table-info">-->
+<!--      <tr>-->
+<!--        <th>ID Boleto</th>-->
+<!--        <th>Asiento</th>-->
+<!--        <th>Zona</th>-->
+<!--        <th>Precio</th>-->
+<!--        <th>Estado</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr th:each="boleto : ${compra.boletos}">-->
+<!--        <td th:text="${boleto.idBoleto}"></td>-->
+<!--        <td th:text="${boleto.asiento.numeroAsiento}"></td>-->
+<!--        <td th:text="${boleto.asiento.zona.nombreZona}"></td>-->
+<!--        <td th:text="${boleto.asiento.zona.precio}"></td>-->
+<!--        <td th:text="${boleto.estado}"></td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </div>-->
+
+<!--  <div class="text-end mt-3">-->
+<!--    <a th:href="@{/cliente/inicio}" class="btn btn-secondary">Volver al Inicio</a>-->
+<!--  </div>-->
+<!--</main>-->
+
+<!--<footer th:replace="~{plantillas/footer :: footer}"></footer>-->
+<!--<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>-->
+<!--</body>-->
+<!--</html>-->

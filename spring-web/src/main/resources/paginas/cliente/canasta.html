@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{plantillas/head :: head}"></head>
+<body>
+
+<header th:replace="~{plantillas/header_cliente :: header}"></header>
+
+<main class="container mt-5">
+  <h2 class="text-center text-primary">Mi Canasta</h2>
+
+  <div th:if="${#lists.isEmpty(canasta)}">
+    <p class="text-center text-muted mt-4">Tu canasta está vacía.</p>
+  </div>
+
+  <div th:unless="${#lists.isEmpty(canasta)}">
+    <table class="table table-bordered table-hover text-center mt-4">
+      <thead class="table-info">
+      <tr>
+        <th>Evento</th>
+        <th>Asiento</th>
+        <th>Zona</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="boleto, iter : ${canasta}">
+        <td th:text="${boleto.evento.nombreEvento}">Evento</td>
+        <td th:text="${boleto.asiento.numeroAsiento}">A-101</td>
+        <td th:text="${boleto.asiento.zona.nombreZona}">General</td>
+        <td>$<span th:text="${boleto.asiento.zona.precio}">500.00</span></td>
+        <td>
+          <a th:href="@{/cliente/canasta/eliminar/{index}(index=${iter.index})}" class="btn btn-sm btn-danger">Eliminar</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="text-center mt-4">
+      <a th:href="@{/cliente/compra/finalizar}" class="btn btn-success">Finalizar Compra</a>
+    </div>
+  </div>
+</main>
+
+<footer th:replace="~{plantillas/footer :: footer}"></footer>
+<script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
